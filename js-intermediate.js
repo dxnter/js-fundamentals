@@ -1,18 +1,18 @@
-let starString = (num) => {
-  var string = ''
-  for (var i = 0; i < num; i++) {
-    string += '*'
-  }
-  return string
-}
+const starString = num => {
+	let string = '';
+	for (let i = 0; i < num; i++) {
+		string += '*';
+	}
+	return string;
+};
 
-function drawStars (arr) {
-  for (let val in arr) {
-    if (typeof arr[val] === 'string') {
-      console.log(arr[val][0].toLowerCase().repeat(arr[val].length))
-      continue
-    }
-    console.log('*'.repeat(arr[val]))
-  }
+function drawStars(arr) {
+	for (const val in arr) {
+		if (typeof arr[val] === 'string') {
+			console.log(arr[val][0].toLowerCase().repeat(arr[val].length));
+			continue;
+		}
+		console.log('*'.repeat(arr[val]));
+	}
 }
-drawStars(['STRING', 1, 5, 6])
+drawStars(['STRING', 1, 5, 6]);
