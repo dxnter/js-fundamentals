@@ -15,7 +15,8 @@ const isEven = num => {
 };
 
 const howManyEven = arr => {
-	let count = 0;
+  let
+  count = 0;
 	for (const value in arr) {
 		if (isEven(arr[value])) {
 			count++;

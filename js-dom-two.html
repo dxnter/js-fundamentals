@@ -40,7 +40,21 @@
                 // calculate our number
                 let nums = i * j;
                 // attach our table data tags around the number
-                let data = "<td>" + nums + "</td>";
+                let data;
+
+                if (i === 0) {
+                    nums = j;
+                }
+
+                if (j === 0) {
+                    nums = i;
+                }
+
+                if (nums === 0) {
+                    data = `<td>x</td>`;
+                } else {
+                    data = `<td>${nums}</td>`;
+                }
                 // add it to the html
                 html_string += data;
             }
