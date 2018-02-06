@@ -1,7 +1,10 @@
-const $Dojo = () => {
-    function click(callback) {
-        document.getElementById("clickEvent").click().after("<h1>Hello</h1>")
+function $Dojo(id) {
+    const id = window.document.getElementById(id);
+
+
+    this.click = (callback) => {
+        id.addEventListener("click", callback)
     }
 }
 
-$Dojo
+$Dojo("clickEvent").click(function() { console.log('The button was clicked!') });

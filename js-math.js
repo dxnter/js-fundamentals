@@ -34,6 +34,6 @@ const createDummyArray = n => {
 };
 
 const randomChoice = arr => {
-	const random = Math.floor(Math.random() * arr.length);
+	const random = Math.floor((Math.random() * arr.length));
 	return arr[random];
 };

@@ -1,11 +1,21 @@
-function fib() {
-    var fib, nacci;
+function fib(){
+    var first = 0;
+    var second = 1;
     function nacci() {
-    fib = fib || 0;
-    nacci = nacci || 1;
-    nacci = fib + nacci;
+        var last = first;
+        first = second;
+        second += last;
+        console.log(second);
     }
-    console.log(nacci);
+    return nacci;
 }
+
 var fibCounter = fib();
+
+fibCounter();
+fibCounter();
+fibCounter();
+fibCounter();
+fibCounter();
+fibCounter();
 fibCounter();
