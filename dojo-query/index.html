@@ -5,31 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-    }
-    div {
-        border: 3px solid black;
-        height: 100%;
-    }
-    </style>
     <title>DojoQuery</title>
 </head>
 
 <body>
-    <div class="container">
-        <div>
-            <button id="clickEvent">Click Event</button>
-        </div>
+    <button id="clickButton">Click</button>
 
-        <div>
-            <h1 id="hoverEvent">Hover Over</h1>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <h1 id="hoverText">Hover</h1>
+
+    <script>
+        // button = document.getElementById("clickButton");
+        // button.addEventListener("click", clickCall);
+
+       function $Dojo(id) {
+        document.getElementById(id).onclick = function () { console.log("It works")};
+        document.getElementById(id).mouseover = function () {console.log("It works")}
+       }
+       $Dojo("clickButton");
+       $Dojo("hoverText")
+    </script>
 </body>
 
 </html>
