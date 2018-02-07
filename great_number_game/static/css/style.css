@@ -1,0 +1,6 @@
+.container {
+    margin-top: 50px;
+}
+form[action="/guess"] {
+    margin-bottom: 50px;
+}
