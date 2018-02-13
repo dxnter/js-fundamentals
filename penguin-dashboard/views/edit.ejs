@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>Edit <%= penguin.name %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8 text-center">
+                <h2 class="display-4">Edit <%= penguin.name %></h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="card new-penguin">
+                    <img class="card-img-top" src="/img/penguin.png">
+                    <div class="card-body">
+                        <form method="POST" action="/update">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" autocomplete=off required value="<%= penguin.name %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <select class="custom-select my-1 mr-sm-2" id="age" name="age" required>
+                                    <option value="<%= penguin.age %>" ><%= penguin.age %></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sex">Sex</label>
+                                <select class="custom-select my-1 mr-sm-2" id="sex" name="sex" required>
+                                    <option value="<%= penguin.sex %>"><%= penguin.sex %></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="food">Favorite Food</label>
+                                <select class="custom-select my-1 mr-sm-2" id="food" name="food" required>
+                                    <option value="<%= penguin.food %>"><%= penguin.food %></option>
+                                    <option value="Krill">Krill</option>
+                                    <option value="Crustacean">Crustacean</option>
+                                    <option value="Squid">Squid</option>
+                                    <option value="Fish">Fish</option>
+                                </select>
+                            </div>
+                            <a href="/" class="btn btn-light">Back</a>
+                            <input type="submit" value="Update" class="btn btn-primary">
+                            <a href="#" class="btn btn-danger float-right">Euthanize</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

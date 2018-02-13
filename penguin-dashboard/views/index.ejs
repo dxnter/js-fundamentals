@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>Penguin Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8 text-center">
+                <h2 class="display-4">Penguin Waddle</h2>
+            </div>
+        </div>
+    </div>
+    <div id="grid">
+        <% for (let penguin in penguins) { %>
+            <div class="card new-penguin">
+                <img class="card-img-top" src="/img/penguin.png">
+                <div class="card-body">
+                    <a href="/penguin/<%= penguins[penguin]._id %>">
+                        <h5 class="card-title">
+                            <%= penguins[penguin].name %>
+                        </h5>
+                    </a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Age: </strong>
+                        <%= penguins[penguin].age %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Sex: </strong>
+                        <%= penguins[penguin].sex %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Favorite Food: </strong>
+                        <%= penguins[penguin].food %>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="/penguin/edit/<%= penguins[penguin]._id %>" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</body>
+
+</html>
