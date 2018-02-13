@@ -8,14 +8,18 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <title>Edit <%= penguin.name %></title>
+    <title>Edit
+        <%= penguin.name %>
+    </title>
 </head>
 
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8 text-center">
-                <h2 class="display-4">Edit <%= penguin.name %></h2>
+                <h2 class="display-4">Edit
+                    <%= penguin.name %>
+                </h2>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -23,7 +27,7 @@
                 <div class="card new-penguin">
                     <img class="card-img-top" src="/img/penguin.png">
                     <div class="card-body">
-                        <form method="POST" action="/update">
+                        <form method="POST" action="/penguin/update/<%= penguin._id %>">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" autocomplete=off required value="<%= penguin.name %>">
@@ -31,7 +35,9 @@
                             <div class="form-group">
                                 <label for="age">Age</label>
                                 <select class="custom-select my-1 mr-sm-2" id="age" name="age" required>
-                                    <option value="<%= penguin.age %>" ><%= penguin.age %></option>
+                                    <option value="<%= penguin.age %>">
+                                        <%= penguin.age %>
+                                    </option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -57,7 +63,9 @@
                             <div class="form-group">
                                 <label for="sex">Sex</label>
                                 <select class="custom-select my-1 mr-sm-2" id="sex" name="sex" required>
-                                    <option value="<%= penguin.sex %>"><%= penguin.sex %></option>
+                                    <option value="<%= penguin.sex %>">
+                                        <%= penguin.sex %>
+                                    </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -65,16 +73,20 @@
                             <div class="form-group">
                                 <label for="food">Favorite Food</label>
                                 <select class="custom-select my-1 mr-sm-2" id="food" name="food" required>
-                                    <option value="<%= penguin.food %>"><%= penguin.food %></option>
+                                    <option value="<%= penguin.food %>">
+                                        <%= penguin.food %>
+                                    </option>
                                     <option value="Krill">Krill</option>
                                     <option value="Crustacean">Crustacean</option>
                                     <option value="Squid">Squid</option>
                                     <option value="Fish">Fish</option>
                                 </select>
                             </div>
-                            <a href="/" class="btn btn-light">Back</a>
+                            <a href="/" style="margin-right: 5px" class="btn btn-light">Back</a>
                             <input type="submit" value="Update" class="btn btn-primary">
-                            <a href="#" class="btn btn-danger float-right">Euthanize</a>
+                        </form>
+                        <form style="margin-top: 10px" class="form-inline" action="/penguin/euthanize/<%= penguin._id %>" method="post">
+                            <input class="btn btn-danger float-right" value="Euthanize" type="submit">
                         </form>
                     </div>
                 </div>

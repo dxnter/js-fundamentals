@@ -6,7 +6,6 @@ var port = 8000;
 var app = express();
 
 /**
-    POST '/mongooses/:id' Should be the action attribute for the form in the above route (GET '/mongooses/edit/:id').
     POST '/mongooses/destroy/:id' Should delete the mongoose from the database by ID.
  */
 
@@ -51,27 +50,7 @@ app.get('/penguin/new', (req, res) => {
     res.render('new');
 });
 
-// Showing specific penguin details
-app.get('/penguin/:id', (req, res) => {
-    Penguin.findById(req.params.id, function(err, penguin) {
-        if (!err) {
-            res.render('details', { penguin });
-        } else {
-            return console.log(err);
-        }
-    });
-});
-
-app.get('/penguin/edit/:id', (req, res) => {
-    Penguin.findById(req.params.id, function(err, penguin) {
-        if (!err) {
-            res.render('edit', { penguin });
-        } else {
-            return console.log(err);
-        }
-    });
-});
-
+// Post the new penguin to the database and redirect them to the index
 app.post('/penguin', (req, res) => {
     console.log(`POST DATA: ${req.body.name}, ${req.body.age}, ${req.body.sex}, ${req.body.food}`);
     var penguin = new Penguin({ name: req.body.name, age: req.body.age, sex: req.body.sex, food: req.body.food });
@@ -85,5 +64,55 @@ app.post('/penguin', (req, res) => {
     });
 });
 
-// Start the server on the specified port
+// Showing specific penguin details
+app.get('/penguin/:id', (req, res) => {
+    Penguin.findById(req.params.id, function(err, penguin) {
+        if (!err) {
+            res.render('details', { penguin });
+        } else {
+            return console.log(err);
+        }
+    });
+});
+
+// Page that displays current penguin information in a form with the ability to update specific fields
+app.get('/penguin/edit/:id', (req, res) => {
+    Penguin.findById(req.params.id, function(err, penguin) {
+        if (!err) {
+            res.render('edit', { penguin });
+        } else {
+            return console.log(err);
+        }
+    });
+});
+
+// POST the edited form data and update the penguin data
+app.post('/penguin/update/:id', (req, res) => {
+    Penguin.findById(req.params.id, function(err, penguin) {
+        penguin.name = req.body.name;
+        penguin.age = req.body.age;
+        penguin.sex = req.body.sex;
+        penguin.food = req.body.food;
+        penguin.save(function(err) {
+            if (err) {
+                console.log('Something went wrong');
+            } else {
+                console.log('Successfully updated penguin');
+                res.redirect('/');
+            }
+        });
+    });
+});
+
+// Delete a penguin from the database
+app.post('/penguin/euthanize/:id', (req, res) => {
+    Penguin.remove({ _id: req.params.id }, function(err) {
+        if (err) {
+            console.log('Something went wrong!');
+        }
+        res.redirect('/');
+    });
+});
+
+/** Start the server */
 app.listen(port, () => console.log(`Listening on port ${port}`));
