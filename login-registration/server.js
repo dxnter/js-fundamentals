@@ -4,7 +4,6 @@ const session = require('express-session');
 const port = 8000;
 const app = express();
 
-/** Middleware */
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/client/views');
 
@@ -18,10 +17,7 @@ app.use(
     })
 );
 
-/** Mongoose */
 require('./server/config/mongoose');
-
-/** Routes */
 require('./server/config/routes')(app);
 
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => console.log(`Running on port ${port}...`));
